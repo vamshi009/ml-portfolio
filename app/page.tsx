@@ -10,7 +10,7 @@ export default function Home() {
       </p>
 
       <a
-        href="ml-portfolio/projects"
+        href="projects"
         className="px-6 py-3 bg-black text-white rounded"
       >
         View Projects
