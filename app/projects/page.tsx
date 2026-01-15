@@ -7,7 +7,7 @@ export default function Projects() {
 
       <ul className="space-y-4">
         <li>
-          <Link href="ml-portfolio/projects/rag" className="underline">
+          <Link href="projects/rag" className="underline">
             Retrieval Augmented Generation (RAG)
           </Link>
         </li>
