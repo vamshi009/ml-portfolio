@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body style={{ fontFamily: 'Roboto Mono, Source Code Pro, Courier New, monospace' }}>
+    <html lang="en" style={{ backgroundColor: 'var(--bg)', color: 'var(--text-primary)', fontFamily: 'Roboto Mono, Source Code Pro, Courier New, monospace' }}>
+      <body style={{ backgroundColor: 'var(--bg)', color: 'var(--text-primary)', fontFamily: 'Roboto Mono, Source Code Pro, Courier New, monospace' }}>
         {children}
       </body>
     </html>
