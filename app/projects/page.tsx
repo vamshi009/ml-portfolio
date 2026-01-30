@@ -11,6 +11,16 @@ export default function Projects() {
             Retrieval Augmented Generation (RAG)
           </Link>
         </li>
+        <li>
+          <a href="projects/code-assistant" className="underline matrix-glow">
+            Code Assistant Engine (Chroma & Quantized Llama)
+          </a>
+        </li>
+        <li>
+          <a href="projects/code-agent" className="underline matrix-glow">
+            Code Agent (Actor-Critic & LlamaIndex)
+          </a>
+        </li>
       </ul>
     </div>
   );

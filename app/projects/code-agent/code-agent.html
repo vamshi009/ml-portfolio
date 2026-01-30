@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeAgent - System Documentation</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #f4f4f9; }
+        h1, h2, h3 { color: #2c3e50; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .section { margin-bottom: 30px; }
+        .component { background: #eef2f5; padding: 15px; border-left: 5px solid #3498db; margin-bottom: 15px; }
+        .component h3 { margin-top: 0; }
+        ul { padding-left: 20px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+        .mermaid { text-align: center; margin: 20px 0; overflow-x: auto; }
+    </style>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header style="text-align: center; margin-bottom: 40px;">
+            <h1>CodeAgent</h1>
+            <p>Advanced Codebase Analysis & Question Answering System</p>
+        </header>
+
+        <div class="section">
+            <h2>Product Overview</h2>
+            <p>
+                CodeAgent is a sophisticated tool designed to analyze codebases, extract relevant knowledge, and generate structured insights using Large Language Models (LLMs). 
+                It leverages an Agentic workflow (Actor-Critic-Consolidator) to ensure high-quality, accurate answers to user queries about the code.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>System Components</h2>
+            
+            <div class="component">
+                <h3>1. Codebase Reader</h3>
+                <p>Responsible for parsing source code files. We support two modes:</p>
+                <ul>
+                    <li><strong>Custom Parsing:</strong> Specialized parsers for Python (AST-based) and Java (Regex-based) to extract metadata like classes, methods, and calls.</li>
+                    <li><strong>Native Parsing:</strong> Utilizes LlamaIndex's native readers for broad file support.</li>
+                </ul>
+            </div>
+
+            <div class="component">
+                <h3>2. Knowledge Extractor</h3>
+                <p>Converts parsed code chunks into a searchable knowledge base.</p>
+                <ul>
+                    <li>Uses <strong>HuggingFace Embeddings</strong> (BAAI/bge-small-en-v1.5) for semantic understanding.</li>
+                    <li>Creates a <strong>Vector Store Index</strong> using LlamaIndex for efficient retrieval (RAG).</li>
+                </ul>
+            </div>
+
+            <div class="component">
+                <h3>3. Agentic QA</h3>
+                <p>An intelligent orchestration layer built with <strong>LangGraph</strong>.</p>
+                <ul>
+                    <li><strong>Actor:</strong> Retrieves context and generates an initial answer.</li>
+                    <li><strong>Critic:</strong> Reviews the answer for correctness and completeness.</li>
+                    <li><strong>Consolidator:</strong> Refines the final answer based on the critique.</li>
+                </ul>
+            </div>
+
+            <div class="component">
+                <h3>4. LLM Inference</h3>
+                <p>Powered by local quantized models for privacy and offline capability.</p>
+                <ul>
+                    <li>Currently configured to use <strong>Llama-2-7b-chat</strong> (GGUF format) via <code>llama-cpp-python</code>.</li>
+                    <li>Modular interface allows easy switching to OpenAI or other providers.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>System Design</h2>
+            <p>The following diagram illustrates the data flow and architecture of CodeAgent:</p>
+            <div class="mermaid">
+graph TD
+    subgraph "External"
+        User([User])
+        GitRepo[("GitHub Repository")]
+    end
+
+    subgraph "Interface Layer"
+        CLI["CLI (main.py)"]
+        API["Flask API (app.py)"]
+    end
+
+    subgraph "Core Logic (AgenticQA)"
+        AQA_Obj["AgenticQA Object"]
+        
+        subgraph "LangGraph Workflow"
+            Start((Start))
+            Actor["Actor Node<br/>(Retrieves Context &<br/>Generates Initial Answer)"]
+            Critic["Critic Node<br/>(Reviews Answer &<br/>Provides Feedback)"]
+            Consolidator["Consolidator Node<br/>(Refines Answer based<br/>on Critique)"]
+            End((End))
+        end
+    end
+
+    subgraph "Data Layer (RAG)"
+        KE["Knowledge Extractor"]
+        VectorDB[("Vector Store Index<br/>(HuggingFace Embeddings)")]
+        Retriever["LlamaIndex Retriever"]
+    end
+
+    %% Connections
+    User -->|HTTP POST /ask| API
+    User -->|Run Script| CLI
+    API --> CLI
+    CLI --> AQA_Obj
+    AQA_Obj --> Start
+    Start --> Actor
+    Actor --> Critic
+    Critic --> Consolidator
+    Consolidator --> End
+    GitRepo --> KE
+    KE --> VectorDB
+    Actor -->|Query| Retriever
+    Retriever -->|Fetch Context| VectorDB
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Future Roadmap & Next Steps</h2>
+            <ul>
+                <li><strong>Question Decomposer:</strong> Break down high-level questions into granular sub-questions for more targeted retrieval.</li>
+                <li><strong>Knowledge Segregation:</strong> Build separate indices for raw code and metadata (intra/inter-file relationships) to improve context quality.</li>
+                <li><strong>Intelligent Answer Consolidator:</strong> Enhance the consolidator to merge insights from multiple indices.</li>
+                <li><strong>Model Optimization:</strong> Replace local inference with Ollama or OpenAI API for faster processing and better reasoning capabilities.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
