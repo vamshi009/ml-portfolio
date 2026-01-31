@@ -7,21 +7,21 @@ export default function Projects() {
     {
       title: "Code Assistant Engine",
       description: "An AI-powered documentation assistant that ingests codebases to answer architectural and functional questions.",
-      link: "/projects/code-assistant",
+      link: "projects/code-assistant",
       tags: ["ChromaDB", "Quantized Llama", "FastAPI"],
       color: "#805ad5"
     },
     {
       title: "Code Agent Workflow",
       description: "Advanced agentic system using Actor-Critic methodologies to analyze code and refine answers iteratively.",
-      link: "/projects/code-agent",
+      link: "projects/code-agent",
       tags: ["LlamaIndex", "Agents", "Reasoning"],
       color: "#38a169"
     },
     {
       title: "Finance Analyzer",
       description: "Intelligent financial transaction reconciliation, classification and anomaly detection systems",
-      link: "/projects/financeAnalyzer",
+      link: "projects/financeAnalyzer",
       tags: ["Anomaly Detection", "Sentence Transformers", "Ollama", "Pattern Recognition", "Text2SQL"],
        color: "#38a169"
     }
