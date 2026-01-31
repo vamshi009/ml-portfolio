@@ -19,7 +19,7 @@ export default function Home() {
           </p>
 
           <div style={styles.buttonGroup}>
-            <Link href="/projects" style={styles.primaryButton}>
+            <Link href="projects" style={styles.primaryButton}>
               Explore Projects
             </Link>
             <a href="#writing" style={styles.secondaryButton}>
