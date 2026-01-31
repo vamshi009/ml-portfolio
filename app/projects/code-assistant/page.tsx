@@ -12,6 +12,16 @@ const CodeDocumentationAssistant: React.FC = () => {
             answers questions about architecture, functionality, API endpoints,
             and dependencies using Retrieval-Augmented Generation (RAG).
           </p>
+          <div style={{ marginTop: "24px" }}>
+            <a
+              href="https://github.com/vamshi009/CodeAssistantEngine"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.githubButton}
+            >
+              View on GitHub
+            </a>
+          </div>
         </header>
 
         {/* Conversation */}
@@ -150,6 +160,17 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.6,
     maxWidth: "700px",
     margin: "0 auto",
+  },
+  githubButton: {
+    display: "inline-block",
+    padding: "12px 24px",
+    backgroundColor: "#3182ce",
+    color: "#ffffff",
+    borderRadius: "12px",
+    textDecoration: "none",
+    fontWeight: 600,
+    boxShadow: "0 4px 12px rgba(49,130,206,0.3)",
+    transition: "transform 0.2s ease",
   },
   h2: {
     color: "#2d3748",

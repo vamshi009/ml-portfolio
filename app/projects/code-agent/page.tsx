@@ -11,6 +11,16 @@ const CodeAgentDoc: React.FC = () => {
             Advanced Codebase Analysis &amp; Question Answering System
           </p>
           <div style={styles.badge}>Agentic Workflow</div>
+          <div style={{ marginTop: "24px" }}>
+            <a
+              href="https://github.com/vamshi009/CodeAgent"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.githubButton}
+            >
+              View on GitHub
+            </a>
+          </div>
         </header>
 
         {/* Product Overview */}
@@ -194,6 +204,17 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 600,
     letterSpacing: "0.05em",
     textTransform: "uppercase",
+  },
+  githubButton: {
+    display: "inline-block",
+    padding: "12px 24px",
+    backgroundColor: "#1e293b",
+    color: "#ffffff",
+    borderRadius: "12px",
+    textDecoration: "none",
+    fontWeight: 600,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "transform 0.2s ease",
   },
   section: {
     marginBottom: 80,

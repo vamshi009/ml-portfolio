@@ -92,6 +92,16 @@ const DisputeIntelligenceOverview: React.FC = () => {
           <p style={styles.subtitle}>
             A hybrid architecture combining <strong>Deterministic Rules</strong>, <strong>ML Classifiers</strong>, and <strong>LLM Reasoning</strong> to automate transaction dispute resolution and fraud detection.
           </p>
+          <div style={{ marginTop: "24px" }}>
+            <a
+              href="https://github.com/vamshi009/FinanceAnalyzer"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.githubButton}
+            >
+              View on GitHub
+            </a>
+          </div>
         </header>
 
         <section style={styles.section}>
@@ -184,6 +194,17 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: "0.05em",
     textTransform: "uppercase",
     marginBottom: 16,
+  },
+  githubButton: {
+    display: "inline-block",
+    padding: "12px 24px",
+    backgroundColor: "#064e3b",
+    color: "#ffffff",
+    borderRadius: "12px",
+    textDecoration: "none",
+    fontWeight: 600,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    transition: "transform 0.2s ease",
   },
   title: {
     fontSize: "3rem",
