@@ -28,33 +28,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Writing Section */}
-        <section id="writing" style={{ ...styles.section, marginBottom: "40px" }}>
-          <div style={styles.sectionHeader}>
-            <h2 style={styles.sectionTitle}>Writing & Insights</h2>
-            <p style={styles.sectionDescription}>
-              Deep dives into system architecture, LLMs, and engineering strategy.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {mediumPosts.map((post) => (
-              <MediumCard
-                key={post.url}
-                title={post.title}
-                url={post.url}
-                description={post.description}
-              />
-            ))}
-          </div>
-        </section>
-
         {/* About Me Section */}
-        <section style={styles.section}>
+        <section style={{ ...styles.section, marginBottom: "40px" }}>
           <div style={styles.aboutGrid}>
             <div style={styles.imageWrapper}>
               <Image
-                src="/Causal pic.jpg"
+                src="VamshiProfilePic.png"
                 alt="Vamshi Krishna Srirangam"
                 width={140}
                 height={140}
@@ -79,6 +58,27 @@ export default function Home() {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Writing Section */}
+        <section id="writing" style={styles.section}>
+          <div style={styles.sectionHeader}>
+            <h2 style={styles.sectionTitle}>Writing & Insights</h2>
+            <p style={styles.sectionDescription}>
+              Deep dives into system architecture, LLMs, and engineering strategy.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {mediumPosts.map((post) => (
+              <MediumCard
+                key={post.url}
+                title={post.title}
+                url={post.url}
+                description={post.description}
+              />
+            ))}
           </div>
         </section>
       </div>
