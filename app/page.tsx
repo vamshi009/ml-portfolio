@@ -1,7 +1,7 @@
 import MediumCard from "@/components/MediumCard";
 import { mediumPosts } from "@/lib/MediumPosts";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Home() {
   return (
     <div style={styles.body}>
@@ -29,7 +29,7 @@ export default function Home() {
         </section>
 
         {/* Writing Section */}
-        <section id="writing" style={styles.section}>
+        <section id="writing" style={{ ...styles.section, marginBottom: "40px" }}>
           <div style={styles.sectionHeader}>
             <h2 style={styles.sectionTitle}>Writing & Insights</h2>
             <p style={styles.sectionDescription}>
@@ -46,6 +46,39 @@ export default function Home() {
                 description={post.description}
               />
             ))}
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section style={styles.section}>
+          <div style={styles.aboutGrid}>
+            <div style={styles.imageWrapper}>
+              <Image
+                src="/Causal pic.jpg"
+                alt="Vamshi Krishna Srirangam"
+                width={140}
+                height={140}
+                style={styles.profileImage}
+              />
+            </div>
+            <div>
+              <h2 style={styles.sectionTitle}>About Me</h2>
+              <p style={styles.bio}>
+                Senior Data Scientist at EY.<br />
+                IIIT H B.Tech in CS + Masters in Machine Learning.
+              </p>
+              <div style={styles.contactRow}>
+                <a href="mailto:svkc1234@gmail.com" style={styles.contactLink}>
+                  ✉️ svkc1234@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/vamshi-krishna-srirangam-4307b5110/" target="_blank" rel="noopener noreferrer" style={styles.contactLink}>
+                  🔗 LinkedIn
+                </a>
+                <a href="https://drive.google.com/file/d/1IKFpD2wG9DLfaUtTorH7zhpbrfnJZXSL/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={styles.contactLink}>
+                  📄 Resume
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -150,5 +183,41 @@ const styles: Record<string, React.CSSProperties> = {
   sectionDescription: {
     fontSize: "1.1rem",
     color: "#718096",
+  },
+  aboutGrid: {
+    display: "flex",
+    alignItems: "center",
+    gap: "32px",
+    flexWrap: "wrap",
+  },
+  imageWrapper: {
+    flexShrink: 0,
+  },
+  profileImage: {
+    width: "140px",
+    height: "140px",
+    borderRadius: "50%",
+    objectFit: "cover",
+    border: "4px solid white",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+    backgroundColor: "#cbd5e0",
+  },
+  bio: {
+    fontSize: "1.1rem",
+    lineHeight: 1.6,
+    color: "#4a5568",
+    marginBottom: "16px",
+  },
+  contactRow: {
+    display: "flex",
+    gap: "24px",
+  },
+  contactLink: {
+    color: "#3182ce",
+    fontWeight: 600,
+    textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
   },
 };
